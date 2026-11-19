@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Abdulhakeem Omotolani Yaqoob",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -9.65, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "joystick1", "top": -110, "left": 100, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": -20, "left": 310, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 40, "left": 300, "attrs": { "color": "red", "label": "CAM1" } },
+    { "type": "wokwi-led", "id": "led2", "top": 40, "left": 360, "attrs": { "color": "green", "label": "CAM2" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 20, "left": 300, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 20, "left": 360, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-servo", "id": "servo1", "top": 120, "left": 0, "attrs": { "label": "CAM1-PAN" } },
+    { "type": "wokwi-servo", "id": "servo2", "top": 120, "left": 90, "attrs": { "label": "CAM1-TILT" } },
+    { "type": "wokwi-servo", "id": "servo3", "top": 120, "left": 200, "attrs": { "label": "CAM2-PAN" } },
+    { "type": "wokwi-servo", "id": "servo4", "top": 120, "left": 290, "attrs": { "label": "CAM2-TILT" } }
+  ],
+  "connections": [
+    ["esp:34", "joystick1:HORZ", "green", []],
+    ["esp:35", "joystick1:VERT", "blue", []],
+    ["esp:32", "joystick1:SEL", "yellow", []],
+    ["joystick1:VCC", "esp:3V3", "red", []],
+    ["joystick1:GND", "esp:GND.1", "black", []],
+
+    ["sw1:2", "esp:33", "orange", []],
+    ["sw1:1", "esp:3V3", "red", []],
+    ["sw1:3", "esp:GND.1", "black", []],
+
+    ["esp:25", "r1:1", "orange", []],
+    ["r1:2", "led1:A", "orange", []],
+    ["led1:C", "esp:GND.1", "black", []],
+
+    ["esp:26", "r2:1", "orange", []],
+    ["r2:2", "led2:A", "orange", []],
+    ["led2:C", "esp:GND.1", "black", []],
+
+    ["esp:13", "servo1:PWM", "purple", []],
+    ["servo1:V+", "esp:5V", "red", []],
+    ["servo1:GND", "esp:GND.1", "black", []],
+
+    ["esp:12", "servo2:PWM", "purple", []],
+    ["servo2:V+", "esp:5V", "red", []],
+    ["servo2:GND", "esp:GND.1", "black", []],
+
+    ["esp:14", "servo3:PWM", "purple", []],
+    ["servo3:V+", "esp:5V", "red", []],
+    ["servo3:GND", "esp:GND.1", "black", []],
+
+    ["esp:27", "servo4:PWM", "purple", []],
+    ["servo4:V+", "esp:5V", "red", []],
+    ["servo4:GND", "esp:GND.1", "black", []]
+  ],
+  "dependencies": {}
+}
